@@ -1,0 +1,22 @@
+1. need to install mysql driver (or any other python modules) into project's root
+   pip install pymysql -t C:/workspace/lambda-python3
+
+2. zip the content, not the folder, and upload the file.
+
+3. to execute lambda in VPC, add policy to the lambda role in IAM
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:CreateNetworkInterface",
+        "ec2:DeleteNetworkInterface"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+
+4. invoke
